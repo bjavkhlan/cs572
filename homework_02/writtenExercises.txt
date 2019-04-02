@@ -1,0 +1,17 @@
+1. Explain why do we want sometimes to use setImmediate instead of using setTimeout?
+  Both of them invokes callback function asynchronous way, but setTimeout function takes delay time by argument.
+  So if we want to invoke function asynchronously without delay, we use setImmediate instead of setTimeout.
+  Signature:
+    setImmediate(callback[, ...args])
+    setTimeout(callback, delay[, ...args])
+
+2. Explain the difference between process.nextTick and setImmediate.
+  An event in process.nextTick has the highest priority among all the asynchronous events.
+  In other words, callback functions of process.nextTick will be invoked before the callback functions of setImmediate.
+
+  When there are events pushed into nextTick queue, every other event loop queue freezes
+  and all events from nextTick queue will be invoked 1 by 1.
+  When nextTick queue is empty then event loop will start working.
+
+3. Name 10 core modules that Node provides by default.
+  v8, fs, http, net, crypto, os, path, dns, url, stream, querystring

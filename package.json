@@ -1,0 +1,15 @@
+{
+  "name": "homework_01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "applyCoupon.js",
+  "dependencies": {
+    "rxjs": "^6.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
