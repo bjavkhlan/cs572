@@ -1,7 +1,22 @@
-const { range } = require('rxjs');
-const { map, filter } = require('rxjs/operators');
+const { of, from } = require('rxjs');
+const { flatMap, map, reduce } = require('rxjs/operators');
 
-range(1, 20).pipe(
-  filter(x => x % 2 === 1),
-  map(x => x + x)
-).subscribe(x => console.log(x));
+
+String.prototype.filterWords = function(words) {
+  // let observable$ = from(this.split(/[! ]/))
+  // .pipe(
+  //   map( x => words.find(word => x === word) ? "*".repeat(x.length) : x),
+  //   reduce( (total, current) => total + " " + current )
+  // );
+  let observable$ = of(this)
+  .pipe(
+    flatMap( x => from(x.split(/[! ]/)) ),
+    map( x => words.find(word => x === word) ? "*".repeat(x.length) : x),
+    reduce( (total, current) => total + " " + current )
+  );
+  observable$.subscribe( x => console.log(x) );
+}
+
+console.log("start");
+"This house is nice!".filterWords(['house', 'nice']);
+console.log("end");

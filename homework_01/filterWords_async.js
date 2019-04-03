@@ -1,13 +1,14 @@
 {
   String.prototype.filterWords = async function(words) {
-    try {
-
-    } catch(err) {
-
-    }
-    new Promise((resolve, reject) => {
+    const promise = new Promise((resolve, reject) => {
       resolve(this.split(/[! ]/).map(x => words.find(elem => x == elem) ? "*".repeat(x.length) : x).join(" "));
-    }).then(data => console.log(data));
+    });
+    try {
+      const res = await promise;
+      console.log(res);
+    } catch(err) {
+      console.error(err);
+    }
   };
   "This house is nice!".filterWords(['house', 'nice']);
 };
