@@ -43,6 +43,28 @@ db.zips.aggregate( [
     }}
 ]);
 
+db.zips.aggregate( [
+    { $group: {
+        _id: {
+            state: "$state",
+            city: "$city"
+        },
+        zips: { $sum: 1 }
+    }},
+    { $match: {
+        zips: { $gt: 1 }
+    }},
+    { $project: {
+        _id: 0,
+        state: "$_id.state",
+        city: "$_id.city"
+    }},
+    { $sort: {
+        state: 1,
+        city: 1
+    }}
+]);
+
 db.zips.aggregate([
     { $group: {
         _id: {

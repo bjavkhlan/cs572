@@ -8,9 +8,9 @@ router.get('/', function(req, res, next) {
     try {
       const response = await axios.get("https://randomuser.me/api/?result=10");
       res.set();
-      res.set({
-        'Cache-Control': 'private, max-age=86400',
-        "Link": "<https://randomuser.me/api/?result=10>; rel='first'",
+      res.links({
+        next: 'https://randomuser.me/api/?result=11',
+        last: 'https://randomuser.me/api/?result=9'
       });
       res.send(response.data);
       res.end();
