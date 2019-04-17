@@ -4,7 +4,7 @@ import { Component, Output } from '@angular/core';
   selector: 'app-root',
   template: `
     <smart></smart>
-    <div isInvisible [visibility]="false">Inside isInvisible</div>
+    <div [isInvisible]="false">Inside isInvisible</div>
     <div makeBigger>Double click ME!</div>
   `,
   styles: [],
