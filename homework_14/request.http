@@ -1,0 +1,20 @@
+###
+POST http://localhost:5000/login HTTP/1.1
+Content-Type: application/json; charset=utf-8
+
+{
+    "email": "aaa",
+    "password": "bbb"
+}
+
+
+
+
+###
+POST http://localhost:5000/verify HTTP/1.1
+Content-Type: application/json; charset=utf-8
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFhYSIsInBhc3N3b3JkIjoiJDJiJDEwJENHVkFBTnRaVzJESjFvam9qRXpWQS5zcXRpVHltSW80ZTRJYmQwSEM1QjBlZTFrUEdkelVPIiwiaWF0IjoxNTU1NjIwMjcxfQ.gt6Sw-1uI34bNxl0K4xJj3joYfqmRojtAFLMjdTnCIE"
+}
+

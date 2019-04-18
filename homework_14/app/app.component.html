@@ -1,0 +1,59 @@
+<h2>Sign Up</h2>
+Please fill in this form to create an account!
+
+<hr>
+<form [formGroup]="singupform" (ngSubmit)="onSignUpSubmit()">
+    <div class="form-inline">
+        <div class="col-md-6">
+        <input type="text" class="form-control" formControlName="fname" placeholder="First Name">
+    </div>
+    <div class="col-md-6">
+      <input type="text" class="form-control" formControlName="lname" placeholder="Last Name">
+    </div>
+    </div>
+    <br>
+    <div class="form-group">
+      <input type="text" class="form-control" formControlName="email" placeholder="Email">
+      <div class="text-danger" *ngIf="singupform.get('email').dirty && !singupform.get('email').valid">
+          Invalid Email
+      </div>
+    </div>
+    <div class="form-group">
+        <input type="password" class="form-control" formControlName="password" placeholder="Password">
+        <div class="text-danger" *ngIf="false">
+            Invalid Email
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="password" class="form-control" formControlName="confirmPassword" placeholder="Confirm Password">
+        <div class="text-danger" *ngIf=" singupform.get('confirmPassword').dirty
+          && singupform.get('password').value !== singupform.get('confirmPassword').value ">
+            Password doesn't match!
+        </div>
+    </div>
+    <div class="from-group">
+      <input type="checkbox" class="from-control" formControlName="policy">
+      I accept the <a href="#">Term of Use</a> & <a href="#">Privacy Policy</a>.
+    </div>
+    <div class="from-group">
+      <button type="submit" class="from-control btn btn-primary" [disabled]="!singupform.valid">Signup</button>
+    </div>
+</form>
+
+
+<hr>
+<h2>Please Login</h2>
+<form [formGroup]="loginform" (ngSubmit)="onLoginSubmit()">
+  <div class="form-group">
+    <input type="text" class="form-control" formControlName="email" placeholder="Email">
+  </div>
+  <div class="form-group">
+    <input type="password" class="form-control" formControlName="password" placeholder="Password">
+  </div>
+  <div class="from-group">
+    <button type="submit" class="from-control btn btn-primary" [disabled]="!loginform.valid">Login</button>
+  </div>
+</form>
+
+<hr>
+<button (click)="this.onProtectedBtn()">Send request to /protected</button>
